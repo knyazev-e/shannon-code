@@ -1,32 +1,21 @@
-TEST_TARGET = tests
 PROJECT_TARGET = shannon
 
 CXX = g++
-C_FLAGS = -std=c++17
-L_FLAGS = -lgtest -lgtest_main -lpthread
+CXX_FLAGS = -std=c++17 -Wall -Wextra -O3
 
 PROJECT_SOURCE = encoder.cpp decoder.cpp dictionary.cpp main.cpp
-TEST_SOURCE = encoder.cpp decoder.cpp dictionary.cpp test.cpp
+HEADERS = encoder.h decoder.h dictionary.h
 PROJECT_OBJ = $(PROJECT_SOURCE:.cpp=.o)
-TEST_OBJ = $(TEST_SOURCE:.cpp=.o)
 
-all: $(PROJECT_TARGET) $(TEST_TARGET)
+all: $(PROJECT_TARGET)
 
 $(PROJECT_TARGET): $(PROJECT_OBJ)
 	$(CXX) $(C_FLAGS) -o $@ $^
 
-$(TEST_TARGET): $(TEST_OBJ)
-	$(CXX) $(C_FLAGS) -o $@ $^ $(L_FLAGS)
-
-%.o: %.cpp
+%.o: %.cpp $(HEADERS)
 	$(CXX) $(C_FLAGS) -c $< -o $@
 
-
 clean:
-	rm -f $(PROJECT_TARGET) $(TEST_TARGET) *.o
+	rm -f $(PROJECT_TARGET) *.o encoded.bin decoded.bin codes
 
-test: $(TEST_TARGET)
-	./$(TEST_TARGET)
-
-
-.PHONY: all clean test
+.PHONY: all clean

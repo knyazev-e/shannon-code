@@ -17,7 +17,6 @@ public:
     void savetofile(std::string filename);
     void getfromfile(std::string filename);
 
-private:
     std::unordered_map<char, std::string> char_to_code;
     std::unordered_map<std::string, char> code_to_char;
 };

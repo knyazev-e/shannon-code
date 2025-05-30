@@ -17,7 +17,7 @@ void encode(std::string input_path, std::string output_path, std::string dict_pa
     // encoding
     std::string encoded_contents;
     for (char c : contents) {
-        encoded_contents += dictionary.dict[c];
+        encoded_contents += dictionary.encode(c);
     }
 
     std::vector<char> encoded_bin;

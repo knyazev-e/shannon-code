@@ -8,6 +8,7 @@ An encoder using Shannon coding algorithm, decoder using a dictionary.
 make
 
 # Run
+./shannon
 
-# Tests
-
+# Clean
+make clean

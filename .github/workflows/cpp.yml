@@ -16,6 +16,6 @@ jobs:
     - name: chmod
       run: chmod +x ./shannon
     - name: shannon_alg
-    - run: ./shannon
+      run: ./shannon
     - name: clean
       run: make clean

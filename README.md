@@ -10,5 +10,8 @@ make
 # Run
 ./shannon
 
+# Tests
+./tests
+
 # Clean
 make clean
